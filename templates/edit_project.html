@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Projects</h2>
+
+<form action="{{url_for('update_project_request')}}" method='POST'>
+    <div class="form-group row py-2">
+        <input type="hidden" name="html_id" value="{{project.id}}">
+        <input type="text" name="html_name" value="{{project.name}}" class="col-6 ml-3" placeholder="Name">
+        <button class="btn btn-primary ml-2">Update</button>
+        <a class="btn btn-secondary" href="{{url_for('index')}}">Cancel</a>
+    </div>
+</form>
+
+{% endblock %}

@@ -7,7 +7,7 @@ class Project(Base):
     __tablename__ = 'projects'
 
     id = Column(Integer, primary_key=True)
-    title = Column(String, nullable=False, unique=True)
+    name = Column(String, nullable=False, unique=True)
     
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
