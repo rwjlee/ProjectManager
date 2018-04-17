@@ -5,7 +5,6 @@ from db.data_layer import create_task, get_all_tasks, get_task, update_task, del
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     db_projects = get_all_projects()
@@ -28,6 +27,11 @@ def update_project_request():
     project_id = request.form['html_id']
     project_name = request.form['html_name']
     update_project(project_id, project_name)
+    return redirect(url_for('index'))
+
+@app.route('/delete_project/<project_id>')
+def delete_project_request(project_id):
+    delete_project(project_id)
     return redirect(url_for('index'))
 
 @app.route('/project/<project_id>')
@@ -54,7 +58,11 @@ def update_task_request():
     update_task(task_id, description)
     return redirect(url_for('project_index', project_id = project_id))
 
-
-
+@app.route('/delete_task/<task_id>')
+def delete_task_request(task_id):
+    task = get_task(task_id)
+    project_id = task.project_id
+    delete_task(task_id)
+    return redirect(url_for('project_index', project_id = project_id))
 
 app.run(debug=True)

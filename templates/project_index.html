@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-8">{{task.description}}</div>
     <a href="{{url_for('edit_task', project_id=project.id, task_id=task.id)}}" class="btn btn-warning">Edit</a>
-    <button class="btn btn-danger">Delete</button>
+    <a href="{{url_for('delete_task_request', task_id=task.id)}}" class="btn btn-danger">Delete</a>
 </div>
 <hr>
 
